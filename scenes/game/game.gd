@@ -19,7 +19,7 @@ func _singleton_check() -> void:
 var data : Data
 
 
-## Singleton check & Data initalization.
+## Singleton check & Data initialization.
 func _enter_tree() -> void:
 	_singleton_check()
 	data = Data.new()
