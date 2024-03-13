@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dj748bsni0nws"]
+[gd_scene load_steps=3 format=3 uid="uid://dj748bsni0nws"]
 
 [ext_resource type="Script" path="res://scenes/prototypes/clicker/prototype_clicker.gd" id="1_3s870"]
+[ext_resource type="Script" path="res://scenes/user_interface/stardust_label.gd" id="2_jf2vm"]
 
-[node name="PrototypeClicker" type="Control" node_paths=PackedStringArray("label")]
+[node name="PrototypeClicker" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,7 +11,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3s870")
-label = NodePath("Label")
 
 [node name="Label" type="Label" parent="."]
 custom_minimum_size = Vector2(0, 80)
@@ -23,6 +23,7 @@ theme_type_variation = &"HeaderLarge"
 text = "Stardust : <value>"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("2_jf2vm")
 
 [node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(320, 80)

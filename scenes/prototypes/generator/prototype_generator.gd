@@ -3,8 +3,6 @@ extends Control
 ## Generator prototype creating stardust every seconds.
 
 
-## Reference to the label displaying the current amount of stardust in storage.
-@export var label : Label
 ## Reference to the button starting the generation.
 @export var button : Button
 ## Reference to the timer.
@@ -18,26 +16,14 @@ extends Control
 
 ## Initizalize the label.
 func _ready() -> void:
-	update_label_text()
-	
 	visible = true
 	
 	user_interface.navigation_requested.connect(_on_navigation_request)
 
 
-## Temporary function to update the label.
-func _process(_delta: float) -> void:
-	update_label_text()
-
-
 ## Creates stardust and store it.
 func create_stardust() -> void:
-	Game.ref.data.stardust += 1
-
-
-## Updates the label text to match the current amount of stardust in storage.
-func update_label_text() -> void:
-	label.text = "Stardurst : %s" %Game.ref.data.stardust
+	HandlerStardust.ref.create_stardust(1)
 
 
 ## Start the timer and disable the button.
