@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvp5qob52sak7"]
+
+[ext_resource type="Script" path="res://scenes/views/consciousness_core/consciousness_core.gd" id="1_rv3y0"]
+
+[node name="ConsciousnessCore" type="Control" node_paths=PackedStringArray("intro_view", "main_view")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rv3y0")
+intro_view = NodePath("IntroView")
+main_view = NodePath("MainView")
+
+[node name="IntroView" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AwakenUniverseButton" type="Button" parent="IntroView"]
+custom_minimum_size = Vector2(320, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Awaken the Universe
+Costs : 1 Conciousness Core"
+
+[node name="MainView" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MainView"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -179.0
+offset_top = -19.5
+offset_right = 179.0
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLarge"
+text = "The Universe is Waking Up"
+
+[connection signal="pressed" from="IntroView/AwakenUniverseButton" to="." method="_on_awaken_universe_button_pressed"]

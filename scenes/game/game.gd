@@ -5,7 +5,6 @@ extends Node
 ## Singleton reference.
 static var ref : Game
 
-
 ## Singleton check.
 func _singleton_check() -> void:
 	if not ref:
@@ -14,6 +13,8 @@ func _singleton_check() -> void:
 	
 	queue_free()
 
+## Packed Scene : User Interface.
+@export var scene_user_interface : PackedScene
 
 ## Contains the data to save and load.
 var data : Data
@@ -24,6 +25,12 @@ func _enter_tree() -> void:
 	_singleton_check()
 	data = Data.new()
 	SaveSystem.load_data()
+
+
+## Instantiates User Interface.
+func _ready() -> void:
+	var child : UserInterface = scene_user_interface.instantiate() as UserInterface
+	add_child(child)
 
 
 ## Triggered when the save timer completes a loop. Save the game.

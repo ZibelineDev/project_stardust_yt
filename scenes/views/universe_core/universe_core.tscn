@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct06ygej4u65j"]
+
+[ext_resource type="Script" path="res://scenes/views/universe_core/universe_core.gd" id="1_lbttq"]
+
+[node name="UniverseCore" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lbttq")
+
+[node name="Dormant" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Dormant"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLarge"
+text = "The Universe is dormant.
+Use a Consciousness Core to awaken it."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Active" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://clfmkhvxqmbce"]
+[gd_scene load_steps=6 format=3 uid="uid://clfmkhvxqmbce"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_ns8dq"]
 [ext_resource type="PackedScene" uid="uid://cjymagdl32vwk" path="res://scenes/user_interface/user_interface.tscn" id="2_2yt11"]
 [ext_resource type="Script" path="res://scripts/handlers/handler_stardust.gd" id="2_6k8n8"]
+[ext_resource type="Script" path="res://scripts/handlers/handler_cc_upgrades.gd" id="3_qltc0"]
+[ext_resource type="Script" path="res://scripts/handlers/handler_consciousness_core.gd" id="4_b3pd2"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_ns8dq")
+scene_user_interface = ExtResource("2_2yt11")
 
 [node name="Handlers" type="Node" parent="."]
 
@@ -16,6 +19,10 @@ script = ExtResource("2_6k8n8")
 wait_time = 5.0
 autostart = true
 
-[node name="UserInterface" parent="." instance=ExtResource("2_2yt11")]
+[node name="CCUpgrades" type="Node" parent="Handlers"]
+script = ExtResource("3_qltc0")
 
 [connection signal="timeout" from="SaveTimer" to="." method="_on_save_timer_timeout"]
+
+[node name="ConsciousnessCore" type="Node" parent="Handlers"]
+script = ExtResource("4_b3pd2")
