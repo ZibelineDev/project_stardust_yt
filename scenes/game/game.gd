@@ -23,3 +23,9 @@ var data : Data
 func _enter_tree() -> void:
 	_singleton_check()
 	data = Data.new()
+	SaveSystem.load_data()
+
+
+## Triggered when the save timer completes a loop. Save the game.
+func _on_save_timer_timeout() -> void:
+	SaveSystem.save_data()
