@@ -6,7 +6,7 @@ extends Resource
 ## Current amount of stardust available.
 @export var stardust : int = 0
 ## Current amount of consciousness cores available.
-@export var consciousness_core : int = 1
+@export var consciousness_core : int = 10
 
 ## Upgrade 01 Clicker Upgrade Level.
 @export var up_01_level : int = 0
