@@ -40,7 +40,7 @@ func _on_timer_timeout() -> void:
 
 
 ## Triggered when an upgrade levels up. Recalculate generator power.
-func watch_for_upgrades_level_up(upgrade : Upgrade) -> void:
+func watch_for_upgrades_level_up(_upgrade : Upgrade) -> void:
 	calculate_generator_power()
 
 
