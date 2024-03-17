@@ -24,13 +24,14 @@ func _enter_tree() -> void:
 
 ## Loads data.
 func _ready() -> void:
+	calculate_generator_power()
+	
+	HandlerCCUpgrades.ref.upgrade_leveled_up.connect(watch_for_upgrades_level_up)
+	
 	if Game.ref.data.cc_upgrades.u_01_stardust_generation_level:
 		timer.start()
 		return
 	
-	calculate_generator_power()
-	
-	HandlerCCUpgrades.ref.upgrade_leveled_up.connect(watch_for_upgrades_level_up)
 	HandlerCCUpgrades.ref.u_01_stardust_generation.leveled_up.connect(watch_for_ccu01_level_up)
 
 
