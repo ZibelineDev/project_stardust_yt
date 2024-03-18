@@ -15,6 +15,10 @@ func _enter_tree() -> void:
 	queue_free()
 
 
+## Reference to the cc milestone manager.
+@onready var cc_milestone : MilestoneConsciousnessCore = MilestoneConsciousnessCore.new()
+
+
 ## Emitted when Consciousness Cores are created.
 signal consciousness_core_created(quantity : int)
 ## Emitted  when Consciousness Cores are consumed.
@@ -29,6 +33,7 @@ func consciousness_core() -> int:
 ## Create a specific amount of Consciousness Cores.
 func create_consciousness_core(quantity : int) -> void:
 	Game.ref.data.consciousness_core += quantity
+	Game.ref.data.universe.consciousness_core += quantity
 	consciousness_core_created.emit(quantity)
 
 

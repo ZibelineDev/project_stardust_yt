@@ -6,7 +6,7 @@ extends Resource
 ## Current amount of stardust available.
 @export var stardust : int = 0
 ## Current amount of consciousness cores available.
-@export var consciousness_core : int = 10
+@export var consciousness_core : int = 1
 
 ## Upgrade 01 Clicker Upgrade Level.
 @export var up_01_level : int = 0
@@ -14,3 +14,5 @@ extends Resource
 
 ## Contains CCUpgrades data to save & load.
 @export var cc_upgrades : DataCCUpgrades = DataCCUpgrades.new()
+## Contains Universe data to save & load.
+@export var universe : DataUniverse = DataUniverse.new()
