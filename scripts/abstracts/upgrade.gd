@@ -4,6 +4,8 @@ extends Node
 
 ## Emitted when the upgrades has leveled up.
 signal leveled_up
+## Emitted when an upgrade is unlocked.
+signal upgrade_unlocked
 
 ## Level of the upgrade.
 var level : int = -1
@@ -37,3 +39,9 @@ func can_afford() -> bool:
 ## Consumes stardust to level up.
 func level_up() -> void:
 	printerr("level_up() method not defined.")
+
+
+## Virtual class, must be overwritten.[br]
+## Returns whether or not the upgrade has been unlocked.
+func is_unlocked() -> bool:
+	return false

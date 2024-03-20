@@ -17,6 +17,8 @@ func _enter_tree() -> void:
 
 ## Emitted when an upgrade has leveled up.
 signal upgrade_leveled_up(upgrade : Upgrade)
+## Emitted when an upgrade unlocks.
+signal upgrade_unlocked(upgrade : Upgrade)
 
 
 ## Reference to CCUpgrade 01.
@@ -34,3 +36,13 @@ func get_all_upgrades() -> Array[Upgrade]:
 		u_02_stardust_boost,
 		u_03_unlock_nebulas,
 	]
+
+
+func get_all_unlocked_upgrades() -> Array[Upgrade]:
+	var list : Array[Upgrade] = []
+	
+	for upgrade : Upgrade in get_all_upgrades():
+		if upgrade.is_unlocked():
+			list.append(upgrade)
+	
+	return list
