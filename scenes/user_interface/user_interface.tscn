@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cjymagdl32vwk"]
+[gd_scene load_steps=9 format=3 uid="uid://cjymagdl32vwk"]
 
 [ext_resource type="Script" path="res://scenes/user_interface/user_interface.gd" id="1_ls8lu"]
 [ext_resource type="PackedScene" uid="uid://d0l2xk3s1uftw" path="res://scenes/prototypes/generator/prototype_generator.tscn" id="1_vmtxp"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dj748bsni0nws" path="res://scenes/prototypes/clicker/prototype_clicker.tscn" id="3_tufrj"]
 [ext_resource type="PackedScene" uid="uid://my3lnkp5orop" path="res://scenes/prototypes/upgrades/prototype_upgrades.tscn" id="5_3qyw8"]
 [ext_resource type="PackedScene" uid="uid://1xut3pux3wny" path="res://scenes/views/consciousness_core/consciousness_core_view.tscn" id="6_meoh3"]
+[ext_resource type="PackedScene" uid="uid://cxrjp0b53vrqi" path="res://scenes/views/universe/universe_view.tscn" id="8_34mn2"]
 
 [node name="UserInterface" type="Control"]
 layout_mode = 3
@@ -57,16 +58,23 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 
 [node name="PrototypeGeneratorLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Prototype Generator"
 
 [node name="PrototypeClickerLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Prototype Clicker"
 
 [node name="PrototypeUpgradesLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Prototype Upgrades"
+
+[node name="UniverseLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Universe"
 
 [node name="ConsciousnessCoreLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -121,6 +129,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="PrototypeGenerator" parent="HBoxContainer/MainView" node_paths=PackedStringArray("user_interface") instance=ExtResource("1_vmtxp")]
+visible = false
 layout_mode = 1
 user_interface = NodePath("../../..")
 
@@ -140,9 +149,15 @@ view = 2
 visible = false
 layout_mode = 1
 user_interface = NodePath("../../..")
+view = 4
+
+[node name="UniverseView" parent="HBoxContainer/MainView" node_paths=PackedStringArray("user_interface") instance=ExtResource("8_34mn2")]
+layout_mode = 1
+user_interface = NodePath("../../..")
 view = 3
 
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeGeneratorLink" to="." method="_on_prototype_generator_link_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeClickerLink" to="." method="_on_prototype_clicker_link_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeUpgradesLink" to="." method="_on_prototype_upgrades_link_pressed"]
+[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/UniverseLink" to="." method="_on_universe_link_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/ConsciousnessCoreLink" to="." method="_on_consciousness_core_link_pressed"]

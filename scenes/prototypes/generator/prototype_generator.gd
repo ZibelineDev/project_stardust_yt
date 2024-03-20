@@ -12,7 +12,7 @@ extends View
 ## Initizalize the label.
 func _ready() -> void:
 	super()
-	visible = true
+	visible = false
 
 
 ## Creates stardust and store it.
