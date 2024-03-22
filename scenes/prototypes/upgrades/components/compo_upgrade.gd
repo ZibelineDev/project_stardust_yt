@@ -10,6 +10,8 @@ extends Control
 ## Reference to the purchase button.
 @export var button : Button
 
+@export var veil : ColorRect
+
 ## Upgrade to display.
 var upgrade : Upgrade
 
@@ -21,6 +23,7 @@ func _ready() -> void:
 	update_label_title()
 	update_label_description()
 	update_button()
+	update_veil()
 	
 	HandlerStardust.ref.stardust_created.connect(update_button)
 	HandlerStardust.ref.stardust_consumed.connect(update_button)
@@ -28,6 +31,7 @@ func _ready() -> void:
 	upgrade.leveled_up.connect(update_label_title)
 	upgrade.leveled_up.connect(update_label_description)
 	upgrade.leveled_up.connect(update_button)
+	upgrade.leveled_up.connect(update_veil)
 
 
 ## Updates the title of the upgrade.
@@ -47,6 +51,15 @@ func update_button(_quantity : int = -1) -> void:
 		return
 	
 	button.disabled = true
+
+
+## Hides or Displays the veil based on the upgrade status.
+func update_veil() -> void:
+	if upgrade.is_disabled():
+		veil.visible = true
+	
+	else:
+		veil.visible = false
 
 
 ## Triggered when the purchase button is pressed.

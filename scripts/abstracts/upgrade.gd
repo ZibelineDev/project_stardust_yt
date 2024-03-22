@@ -49,3 +49,9 @@ func level_up() -> void:
 ## Returns whether or not the upgrade has been unlocked.
 func is_unlocked() -> bool:
 	return false
+
+
+## Virtual class, must be overwritten.[br]
+## Returns whether or not the upgrade has been disabled.
+func is_disabled() -> bool:
+	return false

@@ -23,15 +23,15 @@ func title() -> String:
 	
 	match level:
 		0:
-			text += " I"
+			text += " "
 		1:
-			text += " II"
+			text += " I"
 		2:
-			text += " III"
+			text += " II"
 		3:
-			text += " IV"
+			text += " III"
 		4:
-			text += " V"
+			text += " IV"
 		5:
 			text += " V"
 	return text 
@@ -87,3 +87,11 @@ func is_unlocked() -> bool:
 func _on_ccu01_level_up() -> void:
 	HandlerCCUpgrades.ref.u_01_stardust_generation.leveled_up.disconnect(_on_ccu01_level_up)
 	HandlerCCUpgrades.ref.upgrade_unlocked.emit(self)
+
+
+## Returns whether or not the upgrade has been disabled.
+func is_disabled() -> bool:
+	if level >= max_level:
+		return true
+	
+	return false

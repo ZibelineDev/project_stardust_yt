@@ -71,3 +71,8 @@ func is_unlocked() -> bool:
 func _on_ccu01_level_up() -> void:
 	HandlerCCUpgrades.ref.u_01_stardust_generation.leveled_up.disconnect(_on_ccu01_level_up)
 	HandlerCCUpgrades.ref.upgrade_unlocked.emit(self)
+
+
+## Returns whether or not the upgrade has been disabled.
+func is_disabled() -> bool:
+	return Game.ref.data.cc_upgrades.u_03_unlock_nebulas
