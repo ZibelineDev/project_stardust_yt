@@ -9,12 +9,16 @@ signal upgrade_unlocked
 
 ## Level of the upgrade.
 var level : int = -1
-## Title or "name" of the upgrade.
-var title : String = "Title not defined."
 ## Base cost of the upgrade.
 var base_cost : int = -1
 ## Current cost of the upgrade.
 var cost : int = -1
+
+
+## Virtual class, must be overwritten.[br]
+## Returns the title of the upgrade.
+func title() -> String:
+	return "Title not defined."
 
 
 ## Virtual class, must be overwritten.[br]

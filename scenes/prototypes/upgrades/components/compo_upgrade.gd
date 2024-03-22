@@ -32,8 +32,7 @@ func _ready() -> void:
 
 ## Updates the title of the upgrade.
 func update_label_title() -> void:
-	var text : String = upgrade.title + " (%s)" %upgrade.level
-	label_title.text = text
+	label_title.text = upgrade.title()
 
 
 ## Updates the description of the upgrade.

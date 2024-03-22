@@ -10,12 +10,31 @@ var max_level : int = 5
 ## Initialize values.
 func _init() -> void:
 	level = Game.ref.data.cc_upgrades.u_02_stardust_boost_level
-	title = "Stardust Generator Efficiency"
 	base_cost = 1
 	cost = 1
 	
 	if not is_unlocked():
 		HandlerCCUpgrades.ref.u_01_stardust_generation.leveled_up.connect(_on_ccu01_level_up)
+
+
+## Returns the title of the upgrade.
+func title() -> String:
+	var text : String = "Stardust Generator Efficiency"
+	
+	match level:
+		0:
+			text += " I"
+		1:
+			text += " II"
+		2:
+			text += " III"
+		3:
+			text += " IV"
+		4:
+			text += " V"
+		5:
+			text += " V"
+	return text 
 
 
 ## Returns the description of the upgrade.

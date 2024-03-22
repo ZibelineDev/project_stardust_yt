@@ -7,9 +7,13 @@ var max_level : int = 1
 
 func _init() -> void:
 	level = Game.ref.data.cc_upgrades.u_01_stardust_generation_level
-	title = "Awaken the Universe"
 	base_cost = 1
 	calculate_cost()
+
+
+## Returns the title of the upgrade.
+func title() -> String:
+	return "Awaken the Universe"
 
 
 ## Returns the description of the upgrade.
