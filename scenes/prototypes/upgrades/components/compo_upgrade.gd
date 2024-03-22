@@ -25,7 +25,7 @@ func _ready() -> void:
 	if not upgrade.is_disabled():
 		HandlerStardust.ref.stardust_created.connect(update_button)
 		HandlerStardust.ref.stardust_consumed.connect(update_button)
-	
+		
 		upgrade.leveled_up.connect(update_component)
 
 
