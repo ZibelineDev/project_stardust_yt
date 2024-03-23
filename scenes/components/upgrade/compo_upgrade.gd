@@ -17,9 +17,6 @@ var upgrade : Upgrade
 
 
 func _ready() -> void:
-	if not upgrade:
-		upgrade = Up01ClickerUpgrade.new()
-	
 	update_component()
 	
 	if not upgrade.is_disabled():

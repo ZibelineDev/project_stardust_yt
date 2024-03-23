@@ -8,9 +8,6 @@ extends Resource
 ## Current amount of consciousness cores available.
 @export var consciousness_core : int = 1
 
-## Upgrade 01 Clicker Upgrade Level.
-@export var up_01_level : int = 0
-
 
 ## Contains CCUpgrades data to save & load.
 @export var cc_upgrades : DataCCUpgrades = DataCCUpgrades.new()
