@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://dflhgucmerk2"]
+
+[ext_resource type="Script" path="res://scenes/views/nebulas/component/nebula/compo_nebula.gd" id="1_sl2wa"]
+
+[node name="Nebula" type="VBoxContainer" node_paths=PackedStringArray("label_name", "label_composition", "consumption_slider")]
+offset_right = 622.0
+offset_bottom = 125.0
+theme_override_constants/separation = 16
+script = ExtResource("1_sl2wa")
+label_name = NodePath("NebulaName")
+label_composition = NodePath("Composition")
+consumption_slider = NodePath("MarginContainer2/HSlider")
+
+[node name="NebulaName" type="Label" parent="."]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Nebula Name"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Composition" type="RichTextLabel" parent="."]
+layout_mode = 2
+bbcode_enabled = true
+text = "[b]Stardust :[/b] no_value"
+fit_content = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+
+[node name="HSlider" type="HSlider" parent="MarginContainer2"]
+layout_mode = 2
+max_value = 5.0
+
+[connection signal="value_changed" from="MarginContainer2/HSlider" to="." method="_on_h_slider_value_changed"]
