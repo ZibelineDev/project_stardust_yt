@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bq381csdjc3c1"]
+[gd_scene load_steps=3 format=3 uid="uid://bq381csdjc3c1"]
 
 [ext_resource type="Script" path="res://scenes/views/nebulas/view_nebulas.gd" id="1_ekij1"]
+[ext_resource type="Script" path="res://scenes/views/nebulas/nebula_button.gd" id="2_coei4"]
 
 [node name="ViewNebulas" type="Control"]
 layout_mode = 3
@@ -39,3 +40,141 @@ theme_override_constants/margin_right = 16
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Nebula" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Button" type="TextureButton" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula" node_paths=PackedStringArray("vbox_container", "content")]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+script = ExtResource("2_coei4")
+vbox_container = NodePath("VBoxContainer")
+content = NodePath("../NebulaContent")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Header" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula/Button/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Unnamed Nebula"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula/Button/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula/Button/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="NebulaContent" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula/NebulaContent"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="StardustConsumption" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula/NebulaContent/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Stardust Consumption"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula/NebulaContent/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula/NebulaContent/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula/NebulaContent/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula/NebulaContent/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+max_value = 5.0
+
+[node name="Nebula2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Button" type="TextureButton" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula2" node_paths=PackedStringArray("vbox_container", "content")]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+script = ExtResource("2_coei4")
+vbox_container = NodePath("../../Nebula/Button/VBoxContainer")
+content = NodePath("../../Nebula/NebulaContent")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula2/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Header" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula2/Button/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Unnamed Nebula"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula2/Button/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula2/Button/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="NebulaContent" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula2"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula2/NebulaContent"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="StardustConsumption" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula2/NebulaContent/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Stardust Consumption"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula2/NebulaContent/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula2/NebulaContent/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula2/NebulaContent/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula2/NebulaContent/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+max_value = 5.0
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula/Button" to="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula/Button" method="_on_pressed"]
+[connection signal="resized" from="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula/Button/VBoxContainer" to="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula/Button" method="_on_v_box_container_resized"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula2/Button" to="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula2/Button" method="_on_pressed"]
+[connection signal="resized" from="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula2/Button/VBoxContainer" to="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Nebula2/Button" method="_on_v_box_container_resized"]
