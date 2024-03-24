@@ -17,7 +17,7 @@ func _connect_signals() -> void:
 
 ## Updates the stardust per second display.
 func _update_stardust_per_second() -> void:
-	var text : String = "[b]Stardust/s :[/b] %s" %HandlerStardustGenerator.ref.generator_power
+	var text : String = "[b]Stardust.s⁻¹ :[/b] %s" %HandlerStardustGenerator.ref.generator_power
 	stardust_per_second.text = text
 
 
