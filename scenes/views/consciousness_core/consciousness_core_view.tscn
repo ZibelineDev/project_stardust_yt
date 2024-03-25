@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://1xut3pux3wny"]
+[gd_scene load_steps=5 format=3 uid="uid://1xut3pux3wny"]
 
 [ext_resource type="Script" path="res://scenes/views/consciousness_core/consciousness_core_view.gd" id="1_e3vlj"]
 [ext_resource type="PackedScene" uid="uid://cn7nn7msm57q1" path="res://scenes/components/upgrade/compo_upgrade.tscn" id="2_xox55"]
 [ext_resource type="PackedScene" uid="uid://c7fr7g24gwvik" path="res://scenes/components/stardust_milestone_progress_bar/compo_progress_bar.tscn" id="3_fms88"]
+[ext_resource type="Texture2D" uid="uid://c6570tui6jvbo" path="res://assets/question_mark_small.svg" id="3_sqyds"]
 
 [node name="ConsciousnessCoreView" type="Control" node_paths=PackedStringArray("ccu_area")]
 layout_mode = 3
@@ -31,10 +32,23 @@ theme_override_constants/margin_bottom = 64
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Header" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="Header" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_type_variation = &"HeaderLarge"
 text = "Consciousness Core Upgrades"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 4
+layout_mode = 2
+tooltip_text = "Consciousness Core can be obtained by generating more Stardust.
+
+Each Consciousness Core requires more Stardust to be generated."
+texture = ExtResource("3_sqyds")
+expand_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
