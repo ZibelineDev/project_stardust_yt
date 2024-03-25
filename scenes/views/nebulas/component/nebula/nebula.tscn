@@ -38,5 +38,6 @@ theme_override_constants/margin_right = 64
 [node name="HSlider" type="HSlider" parent="MarginContainer2"]
 layout_mode = 2
 max_value = 5.0
+scrollable = false
 
 [connection signal="value_changed" from="MarginContainer2/HSlider" to="." method="_on_h_slider_value_changed"]
