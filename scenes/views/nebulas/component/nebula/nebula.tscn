@@ -2,14 +2,15 @@
 
 [ext_resource type="Script" path="res://scenes/views/nebulas/component/nebula/compo_nebula.gd" id="1_sl2wa"]
 
-[node name="Nebula" type="VBoxContainer" node_paths=PackedStringArray("label_name", "label_composition", "consumption_slider")]
+[node name="Nebula" type="VBoxContainer" node_paths=PackedStringArray("label_name", "label_composition", "attraction_slider", "release_slider")]
 offset_right = 622.0
 offset_bottom = 125.0
 theme_override_constants/separation = 16
 script = ExtResource("1_sl2wa")
 label_name = NodePath("NebulaName")
-label_composition = NodePath("Composition")
-consumption_slider = NodePath("MarginContainer2/HSlider")
+label_composition = NodePath("MarginContainer3/VBoxContainer/Composition")
+attraction_slider = NodePath("MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/AttractionSlider")
+release_slider = NodePath("MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer/ReleaseSlider")
 
 [node name="NebulaName" type="Label" parent="."]
 layout_mode = 2
@@ -24,20 +25,93 @@ theme_override_constants/margin_right = 16
 [node name="HSeparator" type="HSeparator" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="Composition" type="RichTextLabel" parent="."]
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer3"]
+layout_mode = 2
+
+[node name="CompositionHeader" type="Label" parent="MarginContainer3/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Composition : "
+
+[node name="Composition" type="RichTextLabel" parent="MarginContainer3/VBoxContainer"]
 layout_mode = 2
 bbcode_enabled = true
-text = "[b]Stardust :[/b] no_value"
+text = "Stardust : no_value"
 fit_content = true
 
-[node name="MarginContainer2" type="MarginContainer" parent="."]
+[node name="Spacing" type="Control" parent="MarginContainer3/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="AttractionHeader" type="Label" parent="MarginContainer3/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Stardust Attraction : "
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer3/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_right = 64
 
-[node name="HSlider" type="HSlider" parent="MarginContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer3/VBoxContainer/MarginContainer2"]
 layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="MinAttraction" type="Label" parent="MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="AttractionSlider" type="HSlider" parent="MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 1.0
 max_value = 5.0
+value = 1.0
 scrollable = false
 
-[connection signal="value_changed" from="MarginContainer2/HSlider" to="." method="_on_h_slider_value_changed"]
+[node name="MaxAttraction" type="Label" parent="MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+text = "5"
+
+[node name="Spacing2" type="Control" parent="MarginContainer3/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="ReleaseHeader" type="Label" parent="MarginContainer3/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Ionized Stardust Release :"
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer3/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="MinRelease" type="Label" parent="MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="ReleaseSlider" type="HSlider" parent="MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 1.0
+max_value = 5.0
+value = 1.0
+scrollable = false
+
+[node name="MaxRelease" type="Label" parent="MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer"]
+layout_mode = 2
+text = "5"
+
+[connection signal="value_changed" from="MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/AttractionSlider" to="." method="_on_attraction_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer/ReleaseSlider" to="." method="_on_release_slider_value_changed"]

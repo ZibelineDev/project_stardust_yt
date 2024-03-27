@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cjymagdl32vwk"]
+[gd_scene load_steps=9 format=3 uid="uid://cjymagdl32vwk"]
 
 [ext_resource type="Script" path="res://scenes/user_interface/user_interface.gd" id="1_ls8lu"]
 [ext_resource type="Script" path="res://scenes/user_interface/nebulas_link_button.gd" id="2_owp4l"]
 [ext_resource type="Script" path="res://scenes/user_interface/stardust_label.gd" id="2_yotpx"]
 [ext_resource type="Script" path="res://scenes/user_interface/consciousness_core_label.gd" id="3_qs86n"]
+[ext_resource type="Script" path="res://scenes/user_interface/ionized_stardust_label.gd" id="5_37i0q"]
 [ext_resource type="PackedScene" uid="uid://1xut3pux3wny" path="res://scenes/views/consciousness_core/consciousness_core_view.tscn" id="6_meoh3"]
 [ext_resource type="PackedScene" uid="uid://bjur7clrgnscx" path="res://scenes/views/nebulas/nebulas_view.tscn" id="7_8efjo"]
 [ext_resource type="PackedScene" uid="uid://cxrjp0b53vrqi" path="res://scenes/views/universe/universe_view.tscn" id="8_34mn2"]
@@ -66,7 +67,7 @@ text = "Consciousness Core"
 
 [node name="NebulasLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "NebulasLink"
+text = "Nebulas"
 script = ExtResource("2_owp4l")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LeftPanel/VBoxContainer"]
@@ -104,6 +105,10 @@ script = ExtResource("3_qs86n")
 layout_mode = 2
 text = "Stardust : 15"
 script = ExtResource("2_yotpx")
+
+[node name="IonizedStardustLabel" type="Label" parent="HBoxContainer/LeftPanel/VBoxContainer/Resources/MarginContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("5_37i0q")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
