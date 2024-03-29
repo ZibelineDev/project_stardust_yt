@@ -19,6 +19,9 @@ var attraction_value : int = 1
 ## Amount of Ionized Stardust being released.
 var release_value : int = 1
 
+## Modifier applied to stardust generation. 
+var effect_stardust_generation : int = 0
+
 
 ## Tries to consume Stardust.
 func attract_stardust() -> void:
@@ -35,17 +38,30 @@ func attract_stardust() -> void:
 
 ## Transforms Stardust into Ionized Stardust.
 func refine_stardust() -> void:
-	if stardust >= 25:
+	var ionized_stardust_to_create : int = -1
+	
+	if stardust >= 100:
+		var error : Error = consume_stardust(9)
+		
+		if error :
+			return
+		
+		ionized_stardust_to_create = 5
+	
+	elif stardust >= 25:
 		var error : Error = consume_stardust(3)
 		
 		if error :
 			return
 		
-		var ionized_stardust_to_create : int = 2
+		ionized_stardust_to_create = 2
 		
+	if ionized_stardust_to_create != -1:
 		ionized_stardust += ionized_stardust_to_create
 		Game.ref.data.universe.ionized_stardust += ionized_stardust_to_create
 		Game.ref.data.nebulas[data_index].ionized_stardust = ionized_stardust
+		
+		calculate_effect_stardust_generation()
 		
 		composition_updated.emit()
  
@@ -67,6 +83,8 @@ func consume_ionized_stardust(quantity : int) -> Error:
 		ionized_stardust -= quantity
 		Game.ref.data.nebulas[data_index].ionized_stardust = ionized_stardust
 		
+		calculate_effect_stardust_generation()
+		
 		return Error.OK
 	
 	return Error.FAILED
@@ -87,6 +105,21 @@ func release_ionized_stardust() -> void:
 		return
 	
 	HandlerIonizedStardust.ref.create_ionized_stardust(quantity)
+
+
+## Calculate the potency of stardust generation effect.
+func calculate_effect_stardust_generation() -> void:
+	var old_effect : int = effect_stardust_generation
+	
+	if ionized_stardust >= 25:
+		effect_stardust_generation = 1
+	
+	if ionized_stardust >= 100:
+		effect_stardust_generation = 2
+	
+	if effect_stardust_generation != old_effect:
+		HandlerNebulas.ref.calculate_nebula_effect_stardust_generation()
+
 
 ## Triggered when the Nebula Timer times-out.
 func _on_nebula_timer_timeout() -> void:

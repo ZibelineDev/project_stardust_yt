@@ -13,7 +13,7 @@ func _ready() -> void:
 ## Updates the text the reflect the current amount of Ionized Stardust.
 func update_text(_quantity : int = -1) -> void:
 	if HandlerIonizedStardust.ref.ionized_stardust():
-		text = "Stardust : %s" %HandlerIonizedStardust.ref.ionized_stardust()
+		text = "Ionized Stardust : %s" %HandlerIonizedStardust.ref.ionized_stardust()
 	
 	else:
 		text = ""
