@@ -13,7 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e3vlj")
-ccu_area = NodePath("MarginContainer/VBoxContainer/CCUpgrades")
+ccu_area = NodePath("MarginContainer/VBoxContainer/ScrollContainer/CCUpgrades")
 compo_upgrade_scene = ExtResource("2_xox55")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -60,8 +60,15 @@ theme_override_constants/margin_right = 16
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="CCUpgrades" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 2
+
+[node name="CCUpgrades" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer"]

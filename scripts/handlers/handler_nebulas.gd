@@ -47,6 +47,9 @@ var effect_stardust_consumed : int = 0
 ## Load Nebuas.
 func _ready() -> void:
 	load_nebulas()
+	calculate_nebula_capacity()
+	
+	HandlerCCUpgrades.ref.u_04_max_nebulas.leveled_up.connect(calculate_nebula_capacity)
 
 
 ## Load Nebulas from Data.
@@ -151,3 +154,11 @@ func calculate_effect_stardust_consumed() -> void:
 	
 	if effect_stardust_consumed != old_effect:
 		effect_stardust_consumption_updated.emit()
+
+
+## Calculate the maximum amount of Nebulas which can be created.
+func calculate_nebula_capacity() -> void:
+	var capacity : int = 1
+	capacity += Game.ref.data.cc_upgrades.u_04_max_nebulas_level
+	
+	max_nebulas_count = capacity
