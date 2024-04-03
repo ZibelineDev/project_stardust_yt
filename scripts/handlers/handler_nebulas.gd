@@ -21,6 +21,8 @@ signal nebula_effect_updated
 
 signal effect_stardust_consumption_updated
 
+signal attraction_values_updated
+
 ## Reference to the stardust consumption timer.
 @export var timer : Timer
 
@@ -47,6 +49,11 @@ var effect_stardust_consumed : int = 0
 ## Load Nebuas.
 func _ready() -> void:
 	load_nebulas()
+	calculate_nebula_capacity()
+	calculate_attraction_rate()
+	
+	HandlerCCUpgrades.ref.u_04_max_nebulas.leveled_up.connect(calculate_nebula_capacity)
+	HandlerCCUpgrades.ref.u_05_attraction_power.leveled_up.connect(calculate_attraction_rate)
 
 
 ## Load Nebulas from Data.
@@ -151,3 +158,26 @@ func calculate_effect_stardust_consumed() -> void:
 	
 	if effect_stardust_consumed != old_effect:
 		effect_stardust_consumption_updated.emit()
+
+
+## Calculate the maximum amount of Nebulas which can be created.
+func calculate_nebula_capacity() -> void:
+	var capacity : int = 1
+	capacity += Game.ref.data.cc_upgrades.u_04_max_nebulas_level
+	
+	max_nebulas_count = capacity
+
+
+## Calculate the attractions values for Stardust attraction.
+func calculate_attraction_rate() -> void:
+	var _min_attraction_value : int = 1
+	_min_attraction_value += Game.ref.data.cc_upgrades.u_05_attraction_power_level
+	
+	min_attraction_value = _min_attraction_value
+	
+	var _max_attraction_value : int = 5
+	_max_attraction_value += Game.ref.data.cc_upgrades.u_05_attraction_power_level * 3
+	
+	max_attraction_value = _max_attraction_value
+	
+	attraction_values_updated.emit()
