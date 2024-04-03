@@ -11,3 +11,5 @@ extends Resource
 @export var u_03_unlock_nebulas : bool = false
 ## CCU 04 Max Nebulas Count Level.
 @export var u_04_max_nebulas_level : int = 0
+## CCU 05 Nebula Attraction Power Level.
+@export var u_05_attraction_power_level : int = 0

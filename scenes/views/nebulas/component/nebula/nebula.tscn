@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/views/nebulas/component/nebula/compo_nebula.gd" id="1_sl2wa"]
 
-[node name="Nebula" type="VBoxContainer" node_paths=PackedStringArray("label_name", "label_composition", "attraction_slider", "release_slider")]
+[node name="Nebula" type="VBoxContainer" node_paths=PackedStringArray("label_name", "label_composition", "attraction_slider", "release_slider", "label_attraction_min", "label_attraction_max", "label_attraction_header")]
 offset_right = 622.0
 offset_bottom = 125.0
 theme_override_constants/separation = 16
@@ -11,6 +11,9 @@ label_name = NodePath("NebulaName")
 label_composition = NodePath("MarginContainer3/VBoxContainer/Composition")
 attraction_slider = NodePath("MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/AttractionSlider")
 release_slider = NodePath("MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer/ReleaseSlider")
+label_attraction_min = NodePath("MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MinAttraction")
+label_attraction_max = NodePath("MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MaxAttraction")
+label_attraction_header = NodePath("MarginContainer3/VBoxContainer/AttractionHeader")
 
 [node name="NebulaName" type="Label" parent="."]
 layout_mode = 2
