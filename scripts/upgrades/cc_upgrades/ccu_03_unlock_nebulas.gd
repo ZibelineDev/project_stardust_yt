@@ -3,12 +3,9 @@ extends Upgrade
 ## CCUpgrade 03 : Unlocks Nebulas.
 
 
-## Max Level.
-var max_level : int = 1
-
-
 ## Initialize values.
 func _init() -> void:
+	max_level = 1
 	level = Game.ref.data.cc_upgrades.u_03_unlock_nebulas
 	base_cost = 2
 	cost = 2

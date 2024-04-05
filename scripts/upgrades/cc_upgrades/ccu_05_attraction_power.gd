@@ -2,12 +2,10 @@ class_name CCU05AttractionPower
 extends Upgrade
 ## Increases the amount of Stardust attracted by Nebulas.
 
-## Max Level.
-var max_level : int = 3
-
 
 ## Init Function
 func _init() -> void:
+	max_level = 3
 	level = Game.ref.data.cc_upgrades.u_05_attraction_power_level
 	base_cost = 2
 	cost = 2

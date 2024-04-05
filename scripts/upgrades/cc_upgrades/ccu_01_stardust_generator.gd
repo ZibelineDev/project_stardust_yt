@@ -2,10 +2,9 @@ class_name CCU01StardustGenerator
 extends Upgrade
 ## Unlocks the passive Stardust generation.
 
-var max_level : int = 1
-
 
 func _init() -> void:
+	max_level = 1
 	level = Game.ref.data.cc_upgrades.u_01_stardust_generation_level
 	base_cost = 1
 	calculate_cost()

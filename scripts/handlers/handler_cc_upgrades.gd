@@ -44,11 +44,23 @@ func get_all_upgrades() -> Array[Upgrade]:
 	]
 
 
+## 
 func get_all_unlocked_upgrades() -> Array[Upgrade]:
 	var list : Array[Upgrade] = []
 	
 	for upgrade : Upgrade in get_all_upgrades():
 		if upgrade.is_unlocked():
+			list.append(upgrade)
+	
+	return list
+
+
+##
+func get_all_unlocked_non_max_level_upgrades() -> Array[Upgrade]:
+	var list : Array[Upgrade] = []
+	
+	for upgrade : Upgrade in get_all_unlocked_upgrades():
+		if upgrade.level < upgrade.max_level:
 			list.append(upgrade)
 	
 	return list

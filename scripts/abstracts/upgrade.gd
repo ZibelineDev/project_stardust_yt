@@ -9,6 +9,9 @@ signal upgrade_unlocked
 
 ## Level of the upgrade.
 var level : int = -1
+## Max level the upgrade can reach.
+var max_level : int = -1
+
 ## Base cost of the upgrade.
 var base_cost : int = -1
 ## Current cost of the upgrade.

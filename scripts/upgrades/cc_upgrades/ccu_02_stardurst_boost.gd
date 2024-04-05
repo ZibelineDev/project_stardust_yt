@@ -3,12 +3,9 @@ extends Upgrade
 ## CCU02 Upgrade : Increases the amount of stardust generated per second.
 
 
-## Max Level.
-var max_level : int = 5
-
-
 ## Initialize values.
 func _init() -> void:
+	max_level = 5
 	level = Game.ref.data.cc_upgrades.u_02_stardust_boost_level
 	base_cost = 1
 	cost = 1

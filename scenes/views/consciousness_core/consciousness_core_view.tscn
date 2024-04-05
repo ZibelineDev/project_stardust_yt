@@ -41,6 +41,16 @@ size_flags_horizontal = 3
 theme_type_variation = &"HeaderLarge"
 text = "Consciousness Core Upgrades"
 
+[node name="HideUpgradesOption" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/HideUpgradesOption"]
+layout_mode = 2
+text = "Hide Max Level Upgrades "
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/VBoxContainer/HBoxContainer/HideUpgradesOption"]
+layout_mode = 2
+
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 texture_filter = 4
 layout_mode = 2
@@ -86,3 +96,5 @@ theme_override_constants/margin_right = 64
 
 [node name="ProgressBar" parent="MarginContainer/VBoxContainer/MarginContainer2" instance=ExtResource("3_fms88")]
 layout_mode = 2
+
+[connection signal="toggled" from="MarginContainer/VBoxContainer/HBoxContainer/HideUpgradesOption/CheckButton" to="." method="_on_hide_max_level_upgrades_button_toggle"]

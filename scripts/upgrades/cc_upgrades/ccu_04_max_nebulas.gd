@@ -2,10 +2,10 @@ class_name CCU04MaxNebulas
 extends Upgrade
 ## Increases the max amount of Nebulas the player can create.
 
-var max_level : int = 3 
 
-
+##
 func _init() -> void:
+	max_level = 3
 	level = Game.ref.data.cc_upgrades.u_04_max_nebulas_level
 	base_cost = 2
 	cost = 2
