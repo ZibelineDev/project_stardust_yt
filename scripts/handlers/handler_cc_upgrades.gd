@@ -19,6 +19,8 @@ func _enter_tree() -> void:
 signal upgrade_leveled_up(upgrade : Upgrade)
 ## Emitted when an upgrade unlocks.
 signal upgrade_unlocked(upgrade : Upgrade)
+## Emitted when an upgrade reaches max level.
+signal upgrade_reached_max_level(upgrade : Upgrade)
 
 
 ## Reference to CCUpgrade 01.
@@ -29,8 +31,13 @@ signal upgrade_unlocked(upgrade : Upgrade)
 @onready var u_03_unlock_nebulas : CCU03UnlockNebulas = CCU03UnlockNebulas.new()
 ## Reference to CCUpgrade 04.
 @onready var u_04_max_nebulas : CCU04MaxNebulas = CCU04MaxNebulas.new()
-
+## Reference to CCUpgrade 05.
 @onready var u_05_attraction_power : CCU05AttractionPower = CCU05AttractionPower.new()
+
+
+##
+func _ready() -> void:
+	upgrade_leveled_up.connect(_on_upgrade_level_up)
 
 
 ## Returns all CCUpgrades.
@@ -64,3 +71,9 @@ func get_all_unlocked_non_max_level_upgrades() -> Array[Upgrade]:
 			list.append(upgrade)
 	
 	return list
+
+
+## Triggered when an upgrade levels up.
+func _on_upgrade_level_up(upgrade : Upgrade) -> void:
+	if upgrade.level >= upgrade.max_level:
+		upgrade_reached_max_level.emit(upgrade)

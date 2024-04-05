@@ -17,6 +17,7 @@ func _ready() -> void:
 	visible = false
 	initialize_upgrades()
 	HandlerCCUpgrades.ref.upgrade_unlocked.connect(_on_upgrade_unlocked)
+	HandlerCCUpgrades.ref.upgrade_reached_max_level.connect(_on_upgrade_reaching_max_level)
 
 
 ##
@@ -49,6 +50,11 @@ func regenerate_upgrades() -> void:
 
 ## Triggered when an upgrade unlocks. Regenerate the upgrade nodes.
 func _on_upgrade_unlocked(_upgrade : Upgrade) -> void:
+	regenerate_upgrades()
+
+
+## Triggered when an upgrade reaches max Level.
+func _on_upgrade_reaching_max_level(_upgrade : Upgrade) -> void:
 	regenerate_upgrades()
 
 
