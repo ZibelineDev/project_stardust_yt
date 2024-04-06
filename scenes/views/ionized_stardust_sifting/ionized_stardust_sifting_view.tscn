@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo04ldjbi0t2o"]
+
+[ext_resource type="Script" path="res://scenes/views/ionized_stardust_sifting/ionized_stardust_sifting_view.gd" id="1_v5hqf"]
+[ext_resource type="PackedScene" uid="uid://dp8r4arhn6bm0" path="res://scenes/views/ionized_stardust_sifting/components/sifting_tile.tscn" id="2_ndweo"]
+
+[node name="IonizedStardustSiftingView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v5hqf")
+packed_tile = ExtResource("2_ndweo")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
