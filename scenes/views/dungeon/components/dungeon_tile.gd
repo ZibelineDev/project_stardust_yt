@@ -6,17 +6,24 @@ extends TextureButton
 
 ##
 @export var texture_node : TextureRect
-
+##
 @export var texture_stardust : Texture
-
+##
 @export var texture_empty : Texture
+##
+@export var texture_unrevealed : Texture
 
 ##
 var coordinates : String
 ##
 var content : ViewDugeon.Tiles = ViewDugeon.Tiles.EMPTY
-
+##
 var is_revealed : bool = false
+
+
+##
+func _ready() -> void:
+	texture_node.texture = texture_unrevealed
 
 
 ##
@@ -33,7 +40,7 @@ func _on_pressed() -> void:
 		return
 	
 	if content == ViewDugeon.Tiles.EMPTY:
-		texture_node.texture = texture_empty
+		texture_node.texture = null
 		
 		is_revealed = true
 		

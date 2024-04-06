@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dniepd1eirw7r" path="res://assets/dungeon_button.png" id="1_c1bn1"]
 [ext_resource type="Script" path="res://scenes/views/dungeon/components/dungeon_tile.gd" id="2_e44sj"]
 [ext_resource type="Texture2D" uid="uid://d2tqwf0l2wvqn" path="res://assets/sparkles.png" id="3_kfdv3"]
-[ext_resource type="Texture2D" uid="uid://41c3t7lprnf0" path="res://assets/red_tile.png" id="4_0vn57"]
+[ext_resource type="Texture2D" uid="uid://bkau42fkf3d5v" path="res://assets/gray_tile.png" id="4_gvedt"]
 
 [node name="TextureButton" type="TextureButton" node_paths=PackedStringArray("texture_node")]
 texture_filter = 1
@@ -16,7 +16,8 @@ texture_focused = ExtResource("1_c1bn1")
 script = ExtResource("2_e44sj")
 texture_node = NodePath("Icon")
 texture_stardust = ExtResource("3_kfdv3")
-texture_empty = ExtResource("4_0vn57")
+texture_empty = ExtResource("4_gvedt")
+texture_unrevealed = ExtResource("4_gvedt")
 
 [node name="Icon" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(64, 64)
