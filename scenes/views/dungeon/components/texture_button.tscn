@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://csuey6kqxo2ci"]
+
+[ext_resource type="Texture2D" uid="uid://dniepd1eirw7r" path="res://assets/dungeon_button.png" id="1_c1bn1"]
+[ext_resource type="Script" path="res://scenes/views/dungeon/components/dungeon_tile.gd" id="2_e44sj"]
+
+[node name="TextureButton" type="TextureButton"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+texture_normal = ExtResource("1_c1bn1")
+texture_pressed = ExtResource("1_c1bn1")
+texture_hover = ExtResource("1_c1bn1")
+texture_disabled = ExtResource("1_c1bn1")
+texture_focused = ExtResource("1_c1bn1")
+script = ExtResource("2_e44sj")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
