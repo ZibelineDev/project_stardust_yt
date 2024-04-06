@@ -1,8 +1,14 @@
+class_name ViewDugeon
 extends Control
 ## Dungeon
 ##
 ## @experimental
 
+
+enum Tiles {
+	EMPTY,
+	STARDUST,
+}
 
 ##
 @export var scene_dungeon_tile : PackedScene
@@ -23,5 +29,8 @@ func _ready() -> void:
 			dungeon_container.add_child(node)
 			
 			node.coordinates = "%s%s" %[x, y]
+			
+			if randi_range(0, 100) < 33:
+				node.content = Tiles.STARDUST
 			
 			dungeon_tiles[str(x+y)] = node

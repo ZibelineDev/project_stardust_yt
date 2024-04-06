@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://csuey6kqxo2ci"]
+[gd_scene load_steps=5 format=3 uid="uid://csuey6kqxo2ci"]
 
 [ext_resource type="Texture2D" uid="uid://dniepd1eirw7r" path="res://assets/dungeon_button.png" id="1_c1bn1"]
 [ext_resource type="Script" path="res://scenes/views/dungeon/components/dungeon_tile.gd" id="2_e44sj"]
+[ext_resource type="Texture2D" uid="uid://d2tqwf0l2wvqn" path="res://assets/sparkles.png" id="3_kfdv3"]
+[ext_resource type="Texture2D" uid="uid://41c3t7lprnf0" path="res://assets/red_tile.png" id="4_0vn57"]
 
-[node name="TextureButton" type="TextureButton"]
+[node name="TextureButton" type="TextureButton" node_paths=PackedStringArray("texture_node")]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 texture_normal = ExtResource("1_c1bn1")
@@ -12,5 +14,23 @@ texture_hover = ExtResource("1_c1bn1")
 texture_disabled = ExtResource("1_c1bn1")
 texture_focused = ExtResource("1_c1bn1")
 script = ExtResource("2_e44sj")
+texture_node = NodePath("Icon")
+texture_stardust = ExtResource("3_kfdv3")
+texture_empty = ExtResource("4_0vn57")
+
+[node name="Icon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
