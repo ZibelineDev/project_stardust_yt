@@ -13,3 +13,5 @@ extends Resource
 @export var u_04_max_nebulas_level : int = 0
 ## CCU 05 Nebula Attraction Power Level.
 @export var u_05_attraction_power_level : int = 0
+## CCU 06 Unlock Sifting Game.
+@export var u_06_unlock_sifting : bool = false

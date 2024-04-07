@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bo04ldjbi0t2o"]
+[gd_scene load_steps=4 format=3 uid="uid://bo04ldjbi0t2o"]
 
 [ext_resource type="Script" path="res://scenes/views/ionized_stardust_sifting/ionized_stardust_sifting_view.gd" id="1_v5hqf"]
 [ext_resource type="PackedScene" uid="uid://dp8r4arhn6bm0" path="res://scenes/views/ionized_stardust_sifting/components/sifting_tile.tscn" id="2_ndweo"]
+[ext_resource type="Texture2D" uid="uid://ccofn656fd8ot" path="res://assets/question_mark.svg" id="3_upol2"]
 
 [node name="IonizedStardustSiftingView" type="Control"]
 layout_mode = 3
@@ -26,4 +27,43 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 columns = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="ResetButton" type="Button" parent="MarginContainer"]
+custom_minimum_size = Vector2(320, 80)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Reset Grid"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+texture_filter = 2
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+tooltip_text = "Consume Ionized Stardust to reveal tiles on the grid. It costs 1 Ionized Stardust to reveal a tile.
+
+Tiles can contain Stradust or Consciousness Cores. 
+
+There are between 5 and 10 guaranteed Stardust tiles. 
+
+Consciousness Core tiles are very rare."
+texture = ExtResource("3_upol2")
+expand_mode = 2
+
+[connection signal="pressed" from="MarginContainer/ResetButton" to="." method="_on_reset_button_pressed"]

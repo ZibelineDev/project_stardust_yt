@@ -34,13 +34,26 @@ func _ready() -> void:
 
 ## Triggered when the tile is pressed.
 func _on_pressed() -> void:
-	print("Coordinates : %s" %coordinates)
+	var error : Error = HandlerIonizedStardust.ref.consume_ionized_stardust(1)
+	
+	if error:
+		return
 	
 	if state == Tiles.EMPTY:
 		texture.texture = null
 	
 	if state == Tiles.STARDUST:
 		texture.texture = texture_stardust
+		var generated_stardust : int = randi_range(2, 5)
+		HandlerStardust.ref.create_stardust(generated_stardust)
 	
 	if state == Tiles.CONSCIOUSNESS_CORE:
 		texture.texture = texture_cc
+		HandlerConsciousnessCore.ref.create_consciousness_core(1)
+
+
+## Reset the tile to a Covered Empty state.
+func reset_tile() -> void:
+	texture.texture = texture_covered
+	is_revealed = false
+	state = Tiles.EMPTY

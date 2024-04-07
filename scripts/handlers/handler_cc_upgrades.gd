@@ -33,6 +33,8 @@ signal upgrade_reached_max_level(upgrade : Upgrade)
 @onready var u_04_max_nebulas : CCU04MaxNebulas = CCU04MaxNebulas.new()
 ## Reference to CCUpgrade 05.
 @onready var u_05_attraction_power : CCU05AttractionPower = CCU05AttractionPower.new()
+## Reference to CCUpgrade 06.
+@onready var u_06_unlock_sifting : CCU06UnlockSifting = CCU06UnlockSifting.new()
 
 
 ##
@@ -48,6 +50,7 @@ func get_all_upgrades() -> Array[Upgrade]:
 		u_03_unlock_nebulas,
 		u_04_max_nebulas,
 		u_05_attraction_power,
+		u_06_unlock_sifting,
 	]
 
 

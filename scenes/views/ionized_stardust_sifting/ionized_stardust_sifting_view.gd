@@ -1,5 +1,5 @@
 class_name ViewSiftingMinigame
-extends Control
+extends View
 ## Ionized Stardust Sifting Minigame view.
 
 ## Reference to the Packed Scene containing a tile.
@@ -11,6 +11,7 @@ extends Control
 
 ##
 func _ready() -> void:
+	super()
 	generate_tiles()
 	generate_loot()
 
@@ -59,3 +60,24 @@ func generate_loot() -> void:
 		if tiles[key].state == IonizedStardustSiftingTile.Tiles.EMPTY:
 			tiles[key].state = IonizedStardustSiftingTile.Tiles.STARDUST
 			counter += 1
+
+
+## Reset the tiles to Empty & Covered State.
+func reset_tiles() -> void:
+	for x : int in 5:
+		for y : int in 5:
+			var key : String = "%s%s" %[x, y]
+			
+			@warning_ignore("unsafe_method_access")
+			tiles[key].reset_tile()
+
+
+## Reset the tiles & regenerate new loots.
+func regenerate_grid() -> void:
+	reset_tiles()
+	generate_loot()
+
+
+## Triggered when the Reset Button is Pressed.
+func _on_reset_button_pressed() -> void:
+	regenerate_grid()
