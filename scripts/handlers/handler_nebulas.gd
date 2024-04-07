@@ -80,6 +80,8 @@ func load_nebulas() -> void:
 		timer.timeout.connect(new_nebula._on_nebula_timer_timeout)
 		
 		nebulas.append(new_nebula)
+		
+		index += 1
 	
 	calculate_effect_stardust_consumed()
 
