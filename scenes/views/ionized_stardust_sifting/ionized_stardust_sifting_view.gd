@@ -36,7 +36,7 @@ func generate_loot() -> void:
 	var random_tile : int = -1
 	
 	if randi_range(0, 99) == 99:
-		random_tile = randi_range(1, 25)
+		random_tile = randi_range(0, 24)
 		@warning_ignore("integer_division")
 		var x : int = random_tile / 5
 		var y : int = random_tile % 5
