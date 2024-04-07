@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://dp8r4arhn6bm0"]
+
+[ext_resource type="Texture2D" uid="uid://csqvnuyhw0atu" path="res://assets/minigame_tile.png" id="1_7ldwy"]
+[ext_resource type="Script" path="res://scenes/views/ionized_stardust_sifting/components/sifting_tile.gd" id="2_yen2a"]
+[ext_resource type="Texture2D" uid="uid://kmavep8pmq5u" path="res://assets/minigame_covered_tile.png" id="3_tbpny"]
+[ext_resource type="Texture2D" uid="uid://be87624h8dkjb" path="res://assets/minigame_stardust_tile.png" id="4_7f3e3"]
+[ext_resource type="Texture2D" uid="uid://b4xjoxminp0fr" path="res://assets/minigame_consciousness_core_tile.png" id="5_kdahx"]
+
+[node name="SiftingTile" type="TextureButton"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("1_7ldwy")
+texture_pressed = ExtResource("1_7ldwy")
+texture_hover = ExtResource("1_7ldwy")
+texture_disabled = ExtResource("1_7ldwy")
+texture_focused = ExtResource("1_7ldwy")
+script = ExtResource("2_yen2a")
+texture_covered = ExtResource("3_tbpny")
+texture_stardust = ExtResource("4_7f3e3")
+texture_cc = ExtResource("5_kdahx")
+
+[node name="Texture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

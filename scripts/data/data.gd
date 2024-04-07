@@ -9,7 +9,7 @@ extends Resource
 ## Current amount of stardust available.
 @export var stardust : int = 0
 ## Current amount of Ionized Stardust available.
-@export var ionized_stardust : int = 0
+@export var ionized_stardust : int = 5
 
 
 ## Contains CCUpgrades data to save & load.
