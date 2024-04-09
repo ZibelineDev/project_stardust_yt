@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dp8r4arhn6bm0" path="res://scenes/views/ionized_stardust_sifting/components/sifting_tile.tscn" id="2_ndweo"]
 [ext_resource type="Texture2D" uid="uid://ccofn656fd8ot" path="res://assets/question_mark.svg" id="3_upol2"]
 
-[node name="IonizedStardustSiftingView" type="Control"]
+[node name="IonizedStardustSiftingView" type="Control" node_paths=PackedStringArray("automation_timer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,6 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v5hqf")
+automation_timer = NodePath("AutomationTimer")
 packed_tile = ExtResource("2_ndweo")
 
 [node name="GridContainer" type="GridContainer" parent="."]
@@ -50,7 +51,19 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "Reset Grid"
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Automation"
+
+[node name="AutomationCheckButton" type="CheckButton" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
 texture_filter = 2
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -66,4 +79,9 @@ Consciousness Core tiles are very rare."
 texture = ExtResource("3_upol2")
 expand_mode = 2
 
+[node name="AutomationTimer" type="Timer" parent="."]
+wait_time = 0.25
+
 [connection signal="pressed" from="MarginContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="toggled" from="MarginContainer/HBoxContainer/AutomationCheckButton" to="." method="_on_automation_check_button_toggled"]
+[connection signal="timeout" from="AutomationTimer" to="." method="_on_automation_timer_timeout"]

@@ -2,11 +2,14 @@ class_name ViewSiftingMinigame
 extends View
 ## Ionized Stardust Sifting Minigame view.
 
+## Automation Timer.
+@export var automation_timer : Timer
 ## Reference to the Packed Scene containing a tile.
 @export var packed_tile : PackedScene
-
 ## List of tiles
 @export var tiles : Dictionary
+## Whether or not the game is revealing tiles automatically. 
+var is_automated : bool = false
 
 
 ##
@@ -81,3 +84,35 @@ func regenerate_grid() -> void:
 ## Triggered when the Reset Button is Pressed.
 func _on_reset_button_pressed() -> void:
 	regenerate_grid()
+
+
+## Automation tried to reveal a Tile.
+func automation_tile_reveal() -> void:
+	for tile_index : int in 25:
+		@warning_ignore("integer_division")
+		var x : int = tile_index / 5
+		var y : int = tile_index % 5
+		var key : String = "%s%s" %[x, y]
+		
+		if not (tiles[key] as IonizedStardustSiftingTile).is_revealed:
+			(tiles[key] as IonizedStardustSiftingTile).reveal(3)
+			return
+	
+	regenerate_grid()
+	automation_tile_reveal()
+
+
+## Triggered when the automation timers completes a loop.
+func _on_automation_timer_timeout() -> void:
+	automation_tile_reveal()
+
+
+## Triggered when the automation button is toggled.
+func _on_automation_check_button_toggled(toggled_on: bool) -> void:
+	is_automated = toggled_on
+	
+	if toggled_on:
+		automation_timer.start()
+	
+	if not toggled_on:
+		automation_timer.stop()

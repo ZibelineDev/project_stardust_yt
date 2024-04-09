@@ -34,7 +34,12 @@ func _ready() -> void:
 
 ## Triggered when the tile is pressed.
 func _on_pressed() -> void:
-	var error : Error = HandlerIonizedStardust.ref.consume_ionized_stardust(1)
+	reveal(1)
+
+
+## Try to reveal the Tile.
+func reveal(cost : int) -> void:
+	var error : Error = HandlerIonizedStardust.ref.consume_ionized_stardust(cost)
 	
 	if error:
 		return
@@ -50,6 +55,9 @@ func _on_pressed() -> void:
 	if state == Tiles.CONSCIOUSNESS_CORE:
 		texture.texture = texture_cc
 		HandlerConsciousnessCore.ref.create_consciousness_core(1)
+	
+	is_revealed = true
+
 
 
 ## Reset the tile to a Covered Empty state.
