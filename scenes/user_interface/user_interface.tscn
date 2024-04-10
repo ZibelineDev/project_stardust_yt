@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cjymagdl32vwk"]
+[gd_scene load_steps=12 format=3 uid="uid://cjymagdl32vwk"]
 
 [ext_resource type="Script" path="res://scenes/user_interface/user_interface.gd" id="1_ls8lu"]
 [ext_resource type="Script" path="res://scenes/user_interface/nebulas_link_button.gd" id="2_owp4l"]
@@ -10,6 +10,28 @@
 [ext_resource type="PackedScene" uid="uid://bjur7clrgnscx" path="res://scenes/views/nebulas/nebulas_view.tscn" id="7_8efjo"]
 [ext_resource type="PackedScene" uid="uid://cxrjp0b53vrqi" path="res://scenes/views/universe/universe_view.tscn" id="8_34mn2"]
 [ext_resource type="PackedScene" uid="uid://bo04ldjbi0t2o" path="res://scenes/views/ionized_stardust_sifting/ionized_stardust_sifting_view.tscn" id="9_6s5cg"]
+
+[sub_resource type="GDScript" id="GDScript_a12go"]
+resource_name = "liquid_stardust_label"
+script/source = "extends Label
+## Displays the current amount of Liquid Stardust available.
+
+
+## Connecting signals.
+func _ready() -> void:
+	update_text()
+	HandlerLiquidStardust.ref.liquid_stardust_created.connect(update_text)
+	HandlerLiquidStardust.ref.liquid_stardust_consumed.connect(update_text)
+
+
+## Updates the text the reflect the current amount of Liquid Stardust.
+func update_text(_quantity : int = -1) -> void:
+	if HandlerIonizedStardust.ref.ionized_stardust():
+		text = \"Liquid Stardust : %s\" %HandlerLiquidStardust.ref.liquid_stardust()
+	
+	else:
+		text = \"\"
+"
 
 [node name="UserInterface" type="Control"]
 layout_mode = 3
@@ -116,6 +138,10 @@ script = ExtResource("2_yotpx")
 [node name="IonizedStardustLabel" type="Label" parent="HBoxContainer/LeftPanel/VBoxContainer/Resources/MarginContainer/VBoxContainer"]
 layout_mode = 2
 script = ExtResource("5_37i0q")
+
+[node name="LiquidStardustLabel" type="Label" parent="HBoxContainer/LeftPanel/VBoxContainer/Resources/MarginContainer/VBoxContainer"]
+layout_mode = 2
+script = SubResource("GDScript_a12go")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2

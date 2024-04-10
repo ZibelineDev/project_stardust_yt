@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dp8r4arhn6bm0"]
+[gd_scene load_steps=7 format=3 uid="uid://dp8r4arhn6bm0"]
 
 [ext_resource type="Texture2D" uid="uid://csqvnuyhw0atu" path="res://assets/minigame_tile.png" id="1_7ldwy"]
 [ext_resource type="Script" path="res://scenes/views/ionized_stardust_sifting/components/sifting_tile.gd" id="2_yen2a"]
 [ext_resource type="Texture2D" uid="uid://kmavep8pmq5u" path="res://assets/minigame_covered_tile.png" id="3_tbpny"]
 [ext_resource type="Texture2D" uid="uid://be87624h8dkjb" path="res://assets/minigame_stardust_tile.png" id="4_7f3e3"]
+[ext_resource type="Texture2D" uid="uid://dk74u8id68mf" path="res://assets/liquid_stardust.png" id="5_8h7ns"]
 [ext_resource type="Texture2D" uid="uid://b4xjoxminp0fr" path="res://assets/minigame_consciousness_core_tile.png" id="5_kdahx"]
 
 [node name="SiftingTile" type="TextureButton"]
@@ -24,6 +25,7 @@ texture_focused = ExtResource("1_7ldwy")
 script = ExtResource("2_yen2a")
 texture_covered = ExtResource("3_tbpny")
 texture_stardust = ExtResource("4_7f3e3")
+texture_liquid_stardust = ExtResource("5_8h7ns")
 texture_cc = ExtResource("5_kdahx")
 
 [node name="Texture" type="TextureRect" parent="."]

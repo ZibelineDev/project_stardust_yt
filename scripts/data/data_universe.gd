@@ -12,3 +12,5 @@ extends Resource
 @export var stardust : int = 0
 ## Total amount of Ionized Stardust created in the Universe.
 @export var ionized_stardust : int = 0
+## Total amount of Liquid Stardust created in the Universe.
+@export var liquid_stardust : int = 0

@@ -63,8 +63,9 @@ func watch_for_ccu01_level_up() -> void:
 ## Calculate the amount of stardust which should be created every seconds.
 func calculate_generator_power() -> void:
 	var new_power : int = 1
-	new_power += Game.ref.data.cc_upgrades.u_02_stardust_boost_level
+	new_power += Game.ref.data.cc_upgrades.u_02_stardust_boost_level * 2
 	new_power += HandlerNebulas.ref.effect_stardust_generation
+	new_power += Game.ref.data.sifting.level
 	
 	generator_power = new_power
 	

@@ -8,6 +8,8 @@ extends View
 @export var packed_tile : PackedScene
 ## List of tiles
 @export var tiles : Dictionary
+## Reference the label displaying the level.
+@export var level_label : Label
 ## Whether or not the game is revealing tiles automatically. 
 var is_automated : bool = false
 
@@ -17,6 +19,12 @@ func _ready() -> void:
 	super()
 	generate_tiles()
 	generate_loot()
+	update_level_label()
+
+
+## Update the Sifting Level label.
+func update_level_label() -> void:
+	level_label.text = "Sifting Level : %s" %Game.ref.data.sifting.level
 
 
 ## Generate 25 tiles.
@@ -29,6 +37,7 @@ func generate_tiles() -> void:
 			
 			node.coordinates = key
 			node.state = IonizedStardustSiftingTile.Tiles.EMPTY
+			node.tile_revealed.connect(_on_tile_revealed)
 			
 			get_node("GridContainer").add_child(node)
 			
@@ -48,10 +57,25 @@ func generate_loot() -> void:
 		
 		tiles[key].state = IonizedStardustSiftingTile.Tiles.CONSCIOUSNESS_CORE
 	
+	const LIQUID_STARDUST_COUNT : int = 3
+	
+	var counter : int = 0
+	
+	while counter < LIQUID_STARDUST_COUNT:
+		random_tile = randi_range(0, 24)
+		@warning_ignore("integer_division")
+		var x : int = random_tile / 5
+		var y : int = random_tile % 5
+		var key : String = "%s%s" %[x, y]
+		
+		if tiles[key].state == IonizedStardustSiftingTile.Tiles.EMPTY:
+			tiles[key].state = IonizedStardustSiftingTile.Tiles.LIQUID_STARDUST
+			counter += 1
+	
 	const BASE_STARDUST : int = 5
 	var stardust : int = randi_range(0, 5) + BASE_STARDUST
 	
-	var counter : int = 0
+	counter = 0
 	
 	while counter < stardust:
 		random_tile = randi_range(0, 24)
@@ -116,3 +140,25 @@ func _on_automation_check_button_toggled(toggled_on: bool) -> void:
 	
 	if not toggled_on:
 		automation_timer.stop()
+
+
+## Triggered when a tile is revealed.
+func _on_tile_revealed() -> void:
+	progress_sifting_level()
+
+
+## Increase progress toward next sifting level by 1.
+func progress_sifting_level() -> void:
+	Game.ref.data.sifting.progress += 1
+	check_for_level_up()
+
+
+## Check for potential sifting level up.
+func check_for_level_up() -> void:
+	@warning_ignore("narrowing_conversion")
+	var reach : int = pow(8, Game.ref.data.sifting.level + 1)
+	if Game.ref.data.sifting.progress >= reach : 
+		Game.ref.data.sifting.level += 1
+		Game.ref.data.sifting.progress = 0
+		update_level_label()
+		HandlerStardustGenerator.ref.calculate_generator_power()

@@ -7,12 +7,18 @@ enum Tiles {
 	EMPTY,
 	STARDUST,
 	CONSCIOUSNESS_CORE,
+	LIQUID_STARDUST,
 }
+
+## Emitted when the tile is revelead.
+signal tile_revealed
 
 ## Covered tile Texture.
 @export var texture_covered : Texture2D
 ## Uncovered Stardust Tile.
 @export var texture_stardust : Texture2D
+## Uncovered Liquid Stardust Tile.
+@export var texture_liquid_stardust : Texture2D
 ## Uncovered CC Tile.
 @export var texture_cc : Texture2D
 
@@ -56,7 +62,13 @@ func reveal(cost : int) -> void:
 		texture.texture = texture_cc
 		HandlerConsciousnessCore.ref.create_consciousness_core(1)
 	
+	if state == Tiles.LIQUID_STARDUST:
+		texture.texture = texture_liquid_stardust
+		var quantity : int = randi_range(2, 3)
+		HandlerLiquidStardust.ref.create_liquid_stardust(quantity)
+	
 	is_revealed = true
+	tile_revealed.emit()
 
 
 
