@@ -3,6 +3,8 @@ extends Resource
 ## Contain data to save and load.
 
 
+@export var save_time : int = -1
+
 ## Current amount of consciousness cores available.
 @export var consciousness_core : int = 1
 

@@ -118,6 +118,7 @@ func automation_tile_reveal() -> void:
 		var y : int = tile_index % 5
 		var key : String = "%s%s" %[x, y]
 		
+		@warning_ignore("unsafe_cast")
 		if not (tiles[key] as IonizedStardustSiftingTile).is_revealed:
 			(tiles[key] as IonizedStardustSiftingTile).reveal(3)
 			return

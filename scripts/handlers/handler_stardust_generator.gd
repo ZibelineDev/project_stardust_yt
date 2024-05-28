@@ -5,10 +5,6 @@ extends Node
 ## Singleton reference.
 static var ref : HandlerStardustGenerator
 
-## Amount of Stardust generated every loop.
-var generator_power : int = 1
-
-
 ## Singleton check.
 func _enter_tree() -> void:
 	if not ref:
@@ -24,6 +20,8 @@ signal generator_power_calculated
 ## Reference to the generator timer.
 @export var timer : Timer
 
+## Amount of Stardust generated every loop.
+var generator_power : int = 1
 
 ## Loads data.
 func _ready() -> void:
