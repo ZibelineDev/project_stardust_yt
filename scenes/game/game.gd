@@ -17,6 +17,8 @@ func _singleton_check() -> void:
 
 ## Reference to the user interface packed scene.
 @export var scene_user_interface : PackedScene
+## Reference to the offline progression packed scene.
+@export var scene_offline_progression : PackedScene
 
 ## Contains the data to save and load.
 var data : Data
@@ -32,8 +34,26 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	var node_user_interface : UserInterface = scene_user_interface.instantiate() as UserInterface
 	add_child(node_user_interface)
+	
+	_offline_progression()
 
 
 ## Triggered when the save timer completes a loop. Save the game.
 func _on_save_timer_timeout() -> void:
 	SaveSystem.save_data()
+
+
+func _offline_progression() -> void:
+	var offline_time : int = SaveSystem.offline_time()
+	
+	if offline_time <= 0:
+		return
+	
+	var generated_stardust : int = HandlerStardustGenerator.ref.generator_power * offline_time
+	HandlerStardust.ref.create_stardust(generated_stardust)
+	
+	var node : OfflineProgressionComponent = (
+		scene_offline_progression.instantiate() as OfflineProgressionComponent)
+	
+	node.set_generated_stardust_value(generated_stardust)
+	add_child(node)
