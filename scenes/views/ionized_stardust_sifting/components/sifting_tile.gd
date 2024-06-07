@@ -45,6 +45,9 @@ func _on_pressed() -> void:
 
 ## Try to reveal the Tile.
 func reveal(cost : int) -> void:
+	if is_revealed:
+		return
+	
 	var error : Error = HandlerIonizedStardust.ref.consume_ionized_stardust(cost)
 	
 	if error:
