@@ -13,7 +13,7 @@ config_version=5
 config/name="project_stardust_yt"
 run/main_scene="res://scenes/game/game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/minigame_stardust_tile.png"
 
 [debug]
 
