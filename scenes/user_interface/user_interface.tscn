@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cjymagdl32vwk"]
+[gd_scene load_steps=14 format=3 uid="uid://cjymagdl32vwk"]
 
 [ext_resource type="Script" path="res://scenes/user_interface/user_interface.gd" id="1_ls8lu"]
 [ext_resource type="Script" path="res://scenes/user_interface/nebulas_link_button.gd" id="2_owp4l"]
@@ -10,6 +10,31 @@
 [ext_resource type="PackedScene" uid="uid://bjur7clrgnscx" path="res://scenes/views/nebulas/nebulas_view.tscn" id="7_8efjo"]
 [ext_resource type="PackedScene" uid="uid://cxrjp0b53vrqi" path="res://scenes/views/universe/universe_view.tscn" id="8_34mn2"]
 [ext_resource type="PackedScene" uid="uid://bo04ldjbi0t2o" path="res://scenes/views/ionized_stardust_sifting/ionized_stardust_sifting_view.tscn" id="9_6s5cg"]
+[ext_resource type="PackedScene" uid="uid://dfcapayfnwogk" path="res://scenes/views/achievements/achievements_view.tscn" id="11_01oq2"]
+
+[sub_resource type="GDScript" id="GDScript_ugt5h"]
+script/source = "extends LinkButton
+
+## Check if the players has unlocked Achievements.
+func _ready() -> void:
+	if Game.ref.data.achievements.ach_01_universe_created:
+		visible = true
+	
+	else:
+		visible = false
+		HandlerAchievements.ref.ach_01_universe_created.achievement_completed.connect(
+				_on_ach01_completed
+		)
+
+
+## Triggered when Ach01 is completed.
+## Makes the link visible.
+func _on_ach01_completed() -> void:
+	visible = true
+	HandlerAchievements.ref.ach_01_universe_created.achievement_completed.disconnect(
+		_on_ach01_completed
+	)
+"
 
 [sub_resource type="GDScript" id="GDScript_a12go"]
 resource_name = "liquid_stardust_label"
@@ -99,6 +124,11 @@ layout_mode = 2
 text = "Ionized Stardust Sifting"
 script = ExtResource("3_ewbj3")
 
+[node name="AchievementsLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Achievements"
+script = SubResource("GDScript_ugt5h")
+
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LeftPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
@@ -177,7 +207,14 @@ layout_mode = 1
 user_interface = NodePath("../../..")
 view = 3
 
+[node name="AchievementsView" parent="HBoxContainer/MainView" node_paths=PackedStringArray("user_interface") instance=ExtResource("11_01oq2")]
+visible = false
+layout_mode = 1
+user_interface = NodePath("../../..")
+view = 4
+
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/UniverseLink" to="." method="_on_universe_link_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/ConsciousnessCoreLink" to="." method="_on_consciousness_core_link_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/NebulasLink" to="." method="_on_nebulas_link_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/SiftingLink" to="." method="_on_sifting_link_pressed"]
+[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/AchievementsLink" to="." method="_on_achievements_link_pressed"]

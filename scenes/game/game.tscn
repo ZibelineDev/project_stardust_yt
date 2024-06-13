@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://clfmkhvxqmbce"]
+[gd_scene load_steps=12 format=3 uid="uid://clfmkhvxqmbce"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_ns8dq"]
 [ext_resource type="PackedScene" uid="uid://cjymagdl32vwk" path="res://scenes/user_interface/user_interface.tscn" id="2_2yt11"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scripts/handlers/handler_ionized_stardust.gd" id="4_qhfgw"]
 [ext_resource type="Script" path="res://scripts/handlers/handler_stardust_generator.gd" id="6_oxrjo"]
 [ext_resource type="Script" path="res://scripts/handlers/handler_nebulas.gd" id="7_fxkjl"]
+[ext_resource type="Script" path="res://scripts/handlers/handler_achievements.gd" id="11_i128a"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_ns8dq")
@@ -47,6 +48,9 @@ timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="Handlers/Nebulas"]
 autostart = true
+
+[node name="Achievements" type="Node" parent="Handlers"]
+script = ExtResource("11_i128a")
 
 [node name="SaveTimer" type="Timer" parent="."]
 wait_time = 5.0

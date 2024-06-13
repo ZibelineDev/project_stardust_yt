@@ -9,6 +9,7 @@ enum Views {
 	CONSCIOUSNESS_CORE,
 	NEBULAS,
 	SIFTING,
+	ACHIEVEMENTS,
 }
 
 ## Emitted when something requested navigation. Includes the view target.
@@ -38,3 +39,7 @@ func _on_nebulas_link_pressed() -> void:
 ## Triggered when the Sifting Link Button is clicked.
 func _on_sifting_link_pressed() -> void:
 	navigation_requested.emit(Views.SIFTING)
+
+
+func _on_achievements_link_pressed() -> void:
+	navigation_requested.emit(Views.ACHIEVEMENTS)

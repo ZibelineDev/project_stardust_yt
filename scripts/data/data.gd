@@ -23,6 +23,9 @@ extends Resource
 @export var universe : DataUniverse = DataUniverse.new()
 ## Contains Sifting data.
 @export var sifting : DataSifting = DataSifting.new()
+## Contains Achievements data.
+@export var achievements : DataAchievements = DataAchievements.new()
+
 
 
 ## Contains Nebulas data.
