@@ -3,6 +3,7 @@ extends Node
 
 signal achievement_completed
 signal achievement_progressed
+signal achievement_leveled_up
 
 
 var completed : bool

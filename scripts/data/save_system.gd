@@ -4,7 +4,7 @@ class_name SaveSystem
 ## Path of the file we want to save & load.
 const PATH : String = "user://save.tres"
 ## Whether or not we should load the game.
-const SHOULD_LOAD : bool = true
+const SHOULD_LOAD : bool = false
 ## Maximum offline time in seconds.
 const MAX_OFFLINE_TIME : int = 3600 * 24
 

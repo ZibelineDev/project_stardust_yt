@@ -8,3 +8,5 @@ var ach_01_universe_created : bool = false
 var ach_02_stardust_creator_completed : bool = false
 @export
 var ach_02_progress_value : int = 0
+@export
+var ach_02_level : int = 0
