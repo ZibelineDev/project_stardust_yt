@@ -35,6 +35,7 @@ func _ready() -> void:
 		return
 	
 	HandlerCCUpgrades.ref.u_01_stardust_generation.leveled_up.connect(watch_for_ccu01_level_up)
+	HandlerPrestige.ref.prestige_triggered.connect(_on_prestige)
 
 
 ## Triggered when the timer completes a loop.
@@ -51,11 +52,9 @@ func _on_nebula_effect_updated() -> void:
 	calculate_generator_power()
 
 
-
 ## Wait for ccu_01 to be purchased.
 func watch_for_ccu01_level_up() -> void:
 	timer.start()
-	HandlerCCUpgrades.ref.u_01_stardust_generation.leveled_up.disconnect(watch_for_ccu01_level_up)
 
 
 ## Calculate the amount of stardust which should be created every seconds.
@@ -68,3 +67,8 @@ func calculate_generator_power() -> void:
 	generator_power = new_power
 	
 	generator_power_calculated.emit()
+
+
+func _on_prestige() -> void:
+	calculate_generator_power()
+	timer.stop()

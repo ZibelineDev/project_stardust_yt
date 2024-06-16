@@ -68,3 +68,7 @@ func is_unlocked() -> bool:
 ## Returns whether or not the upgrade has been disabled.
 func is_disabled() -> bool:
 	return Game.ref.data.cc_upgrades.u_01_stardust_generation_level
+
+
+func reload() -> void:
+	level = Game.ref.data.cc_upgrades.u_01_stardust_generation_level

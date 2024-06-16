@@ -73,3 +73,8 @@ func _on_ccu03_level_up() -> void:
 ## Returns whether or not the upgrade has been disabled.
 func is_disabled() -> bool:
 	return Game.ref.data.cc_upgrades.u_06_unlock_sifting
+
+
+func reload() -> void:
+	level = Game.ref.data.cc_upgrades.u_06_unlock_sifting
+	HandlerCCUpgrades.ref.u_03_unlock_nebulas.leveled_up.connect(_on_ccu03_level_up)

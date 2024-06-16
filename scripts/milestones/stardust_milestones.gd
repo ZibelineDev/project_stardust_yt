@@ -21,6 +21,8 @@ func _init() -> void:
 	universe = Game.ref.data.universe
 	HandlerStardust.ref.stardust_created.connect(_on_stardust_created)
 	initialize_new_milestone(universe.stardust_milestone_progress)
+	
+	HandlerPrestige.ref.prestige_triggered.connect(_on_prestige)
 
 
 ## Initialize a new milestone after the previous one is completed.
@@ -56,3 +58,8 @@ func _on_stardust_created(quantity : int) -> void:
 	progressed.emit()
 	
 	check_for_completion()
+
+
+func _on_prestige() -> void:
+	universe = Game.ref.data.universe
+	initialize_new_milestone(universe.stardust_milestone_progress)

@@ -1,60 +1,19 @@
-[gd_scene load_steps=12 format=3 uid="uid://clfmkhvxqmbce"]
+[gd_scene load_steps=5 format=3 uid="uid://clfmkhvxqmbce"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_ns8dq"]
 [ext_resource type="PackedScene" uid="uid://cjymagdl32vwk" path="res://scenes/user_interface/user_interface.tscn" id="2_2yt11"]
-[ext_resource type="Script" path="res://scripts/handlers/handler_stardust.gd" id="2_6k8n8"]
-[ext_resource type="Script" path="res://scripts/handlers/handler_consciousness_core.gd" id="3_oltp2"]
+[ext_resource type="PackedScene" uid="uid://bt7rctil2virm" path="res://scenes/game/handlers/handlers.tscn" id="3_8adoo"]
 [ext_resource type="PackedScene" uid="uid://c4xi263d8k1pj" path="res://scenes/components/offline_progression_window/offline_progression_window.tscn" id="3_w3b8i"]
-[ext_resource type="Script" path="res://scripts/handlers/handler_liquid_stardust.gd" id="3_wjb14"]
-[ext_resource type="Script" path="res://scripts/handlers/handler_cc_upgrades.gd" id="4_e12y8"]
-[ext_resource type="Script" path="res://scripts/handlers/handler_ionized_stardust.gd" id="4_qhfgw"]
-[ext_resource type="Script" path="res://scripts/handlers/handler_stardust_generator.gd" id="6_oxrjo"]
-[ext_resource type="Script" path="res://scripts/handlers/handler_nebulas.gd" id="7_fxkjl"]
-[ext_resource type="Script" path="res://scripts/handlers/handler_achievements.gd" id="11_i128a"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_ns8dq")
 scene_user_interface = ExtResource("2_2yt11")
 scene_offline_progression = ExtResource("3_w3b8i")
 
-[node name="Handlers" type="Node" parent="."]
-
-[node name="Resources" type="Node" parent="Handlers"]
-
-[node name="LiquidStardust" type="Node" parent="Handlers/Resources"]
-script = ExtResource("3_wjb14")
-
-[node name="Stardust" type="Node" parent="Handlers/Resources"]
-script = ExtResource("2_6k8n8")
-
-[node name="IonizedStardust" type="Node" parent="Handlers/Resources"]
-script = ExtResource("4_qhfgw")
-
-[node name="ConsciousnessCore" type="Node" parent="Handlers/Resources"]
-script = ExtResource("3_oltp2")
-
-[node name="CCUpgrades" type="Node" parent="Handlers"]
-script = ExtResource("4_e12y8")
-
-[node name="StardustGenerator" type="Node" parent="Handlers" node_paths=PackedStringArray("timer")]
-script = ExtResource("6_oxrjo")
-timer = NodePath("Timer")
-
-[node name="Timer" type="Timer" parent="Handlers/StardustGenerator"]
-
-[node name="Nebulas" type="Node" parent="Handlers" node_paths=PackedStringArray("timer")]
-script = ExtResource("7_fxkjl")
-timer = NodePath("Timer")
-
-[node name="Timer" type="Timer" parent="Handlers/Nebulas"]
-autostart = true
-
-[node name="Achievements" type="Node" parent="Handlers"]
-script = ExtResource("11_i128a")
+[node name="Handlers" parent="." instance=ExtResource("3_8adoo")]
 
 [node name="SaveTimer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
 
-[connection signal="timeout" from="Handlers/StardustGenerator/Timer" to="Handlers/StardustGenerator" method="_on_timer_timeout"]
 [connection signal="timeout" from="SaveTimer" to="." method="_on_save_timer_timeout"]

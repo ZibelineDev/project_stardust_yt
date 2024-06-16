@@ -27,7 +27,19 @@ extends Resource
 @export var achievements : DataAchievements = DataAchievements.new()
 
 
-
 ## Contains Nebulas data.
 @export var nebulas : Array[DataNebula] = []
 
+
+func prestige_data() -> void:
+	consciousness_core = 1
+	
+	stardust = 0
+	ionized_stardust = 0
+	liquid_stardust = 0
+	
+	cc_upgrades = DataCCUpgrades.new()
+	universe = DataUniverse.new()
+	sifting = DataSifting.new()
+	
+	nebulas.clear()

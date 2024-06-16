@@ -32,8 +32,7 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	var node_user_interface : UserInterface = scene_user_interface.instantiate() as UserInterface
-	add_child(node_user_interface)
+	_load_user_interface()
 	
 	_offline_progression()
 
@@ -57,3 +56,18 @@ func _offline_progression() -> void:
 	
 	node.set_generated_stardust_value(generated_stardust)
 	add_child(node)
+
+
+func reload_user_interface() -> void:
+	var old_interface : UserInterface = get_node("UserInterface")
+	old_interface.name = "OldUserInterface"
+	remove_child(old_interface)
+	old_interface.queue_free()
+	
+	_load_user_interface()
+
+
+func _load_user_interface() -> void:
+	var node_user_interface : UserInterface = scene_user_interface.instantiate() as UserInterface
+	node_user_interface.name = "UserInterface"
+	add_child(node_user_interface)

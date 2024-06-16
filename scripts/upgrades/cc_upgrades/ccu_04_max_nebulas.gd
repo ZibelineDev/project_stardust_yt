@@ -105,3 +105,8 @@ func is_disabled() -> bool:
 func _on_ccu03_level_up() -> void :
 	HandlerCCUpgrades.ref.u_03_unlock_nebulas.leveled_up.disconnect(_on_ccu03_level_up)
 	HandlerCCUpgrades.ref.upgrade_unlocked.emit(self)
+
+
+func reload() -> void:
+	level = Game.ref.data.cc_upgrades.u_04_max_nebulas_level
+	HandlerCCUpgrades.ref.u_03_unlock_nebulas.leveled_up.connect(_on_ccu03_level_up)

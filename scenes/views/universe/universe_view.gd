@@ -33,3 +33,7 @@ func _on_ccu01_level_up() -> void:
 	main_content.visible = true
 	
 	HandlerCCUpgrades.ref.u_01_stardust_generation.leveled_up.disconnect(_on_ccu01_level_up)
+
+
+func _on_prestige_button_pressed() -> void:
+	HandlerPrestige.ref.prestige()

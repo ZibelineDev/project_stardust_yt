@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://bt7rctil2virm"]
+
+[ext_resource type="Script" path="res://scripts/handlers/handler_liquid_stardust.gd" id="1_h3okg"]
+[ext_resource type="Script" path="res://scripts/handlers/handler_stardust.gd" id="2_7rvp6"]
+[ext_resource type="Script" path="res://scripts/handlers/handler_ionized_stardust.gd" id="3_j8qmi"]
+[ext_resource type="Script" path="res://scripts/handlers/handler_consciousness_core.gd" id="4_vewgc"]
+[ext_resource type="Script" path="res://scripts/handlers/handler_cc_upgrades.gd" id="5_sk2nk"]
+[ext_resource type="Script" path="res://scripts/handlers/handler_stardust_generator.gd" id="6_4fp5r"]
+[ext_resource type="Script" path="res://scripts/handlers/handler_nebulas.gd" id="7_lro8s"]
+[ext_resource type="Script" path="res://scripts/handlers/handler_achievements.gd" id="8_wgvti"]
+[ext_resource type="Script" path="res://scripts/handlers/handler_prestige.gd" id="9_4robv"]
+
+[node name="Handlers" type="Node"]
+
+[node name="Resources" type="Node" parent="."]
+
+[node name="LiquidStardust" type="Node" parent="Resources"]
+script = ExtResource("1_h3okg")
+
+[node name="Stardust" type="Node" parent="Resources"]
+script = ExtResource("2_7rvp6")
+
+[node name="IonizedStardust" type="Node" parent="Resources"]
+script = ExtResource("3_j8qmi")
+
+[node name="ConsciousnessCore" type="Node" parent="Resources"]
+script = ExtResource("4_vewgc")
+
+[node name="CCUpgrades" type="Node" parent="."]
+script = ExtResource("5_sk2nk")
+
+[node name="StardustGenerator" type="Node" parent="." node_paths=PackedStringArray("timer")]
+script = ExtResource("6_4fp5r")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="StardustGenerator"]
+
+[node name="Nebulas" type="Node" parent="." node_paths=PackedStringArray("timer")]
+script = ExtResource("7_lro8s")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="Nebulas"]
+autostart = true
+
+[node name="Achievements" type="Node" parent="."]
+script = ExtResource("8_wgvti")
+
+[node name="Prestige" type="Node" parent="."]
+script = ExtResource("9_4robv")
+
+[connection signal="timeout" from="StardustGenerator/Timer" to="StardustGenerator" method="_on_timer_timeout"]

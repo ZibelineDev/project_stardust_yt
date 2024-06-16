@@ -58,3 +58,8 @@ func is_unlocked() -> bool:
 ## Returns whether or not the upgrade has been disabled.
 func is_disabled() -> bool:
 	return false
+
+
+## Virtual class, must be overwritten.[br]
+func reload() -> void:
+	pass

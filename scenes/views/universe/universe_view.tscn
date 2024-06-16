@@ -75,9 +75,19 @@ bbcode_enabled = true
 text = "[b]Stardust/s :[/b] <no_value>"
 fit_content = true
 
+[node name="Space2" type="Control" parent="MainMargin/VBoxContainer/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="PrestigeButton" type="Button" parent="MainMargin/VBoxContainer/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "Prestige"
+
 [node name="Space" type="Control" parent="MainMargin/VBoxContainer/MarginContainer2/VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="StardustMilestones" type="Label" parent="MainMargin/VBoxContainer/MarginContainer2/VBoxContainer"]
 layout_mode = 2
@@ -119,3 +129,5 @@ text = "Your Universe Isn't Active.
 Use Your first Consciousness Core to Awaken it"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="MainMargin/VBoxContainer/MarginContainer2/VBoxContainer/PrestigeButton" to="." method="_on_prestige_button_pressed"]

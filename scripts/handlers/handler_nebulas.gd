@@ -54,14 +54,15 @@ func _ready() -> void:
 	
 	HandlerCCUpgrades.ref.u_04_max_nebulas.leveled_up.connect(calculate_nebula_capacity)
 	HandlerCCUpgrades.ref.u_05_attraction_power.leveled_up.connect(calculate_attraction_rate)
+	HandlerPrestige.ref.prestige_triggered.connect(_on_prestige)
 
 
 ## Load Nebulas from Data.
 func load_nebulas() -> void:
+	nebulas = []
+	
 	if Game.ref.data.nebulas.size() == 0:
 		return
-	
-	nebulas = []
 	
 	var index : int = 0
 	
@@ -183,3 +184,14 @@ func calculate_attraction_rate() -> void:
 	max_attraction_value = _max_attraction_value
 	
 	attraction_values_updated.emit()
+
+
+func _on_prestige() -> void:
+	var _nebulas : Array[Nebula] = get_all_nebulas()
+	
+	for _nebula : Nebula in _nebulas:
+		_nebula.queue_free()
+	
+	load_nebulas()
+	calculate_nebula_capacity()
+	calculate_attraction_rate()

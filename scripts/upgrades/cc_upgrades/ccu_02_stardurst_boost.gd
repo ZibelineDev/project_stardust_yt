@@ -92,3 +92,8 @@ func is_disabled() -> bool:
 		return true
 	
 	return false
+
+
+func reload() -> void:
+	level = Game.ref.data.cc_upgrades.u_02_stardust_boost_level
+	HandlerCCUpgrades.ref.u_01_stardust_generation.leveled_up.connect(_on_ccu01_level_up)
